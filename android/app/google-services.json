@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "2818065536",
+    "project_id": "cp02-eb526",
+    "storage_bucket": "cp02-eb526.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2818065536:android:55a8647038466bcb021265",
+        "android_client_info": {
+          "package_name": "com.alexsison.cp02"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvPhi6vhKPj-S6uE1KiJbxUeeLTZF32aM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
