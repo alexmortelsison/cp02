@@ -50,7 +50,9 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         title: const Center(
-          child: Text('C R U D'),
+          child: Text(
+            'C R U D',
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
