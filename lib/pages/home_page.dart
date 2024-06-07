@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,26 +11,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(
-          Icons.add,
-          color: Theme.of(context).colorScheme.tertiary,
-        ),
-      ),
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Center(
-          child: Text(
-            'C R U D  T E S T',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
-            ),
-          ),
-        ),
-      ),
-    );
+    return const Placeholder();
   }
 }
