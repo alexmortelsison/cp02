@@ -4,7 +4,7 @@ class FirestoreService {
   final CollectionReference notes =
       FirebaseFirestore.instance.collection('notes');
 
-  Future<void> addNote(String note) {
+  Future<void> addNote(note) {
     return notes.add({
       'note': note,
       'timestamp': Timestamp.now(),
