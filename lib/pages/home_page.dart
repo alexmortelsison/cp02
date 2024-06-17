@@ -29,7 +29,6 @@ class _HomePageState extends State<HomePage> {
                 } else {
                   firestoreService.updateNote(docID, textController.text);
                 }
-
                 textController.clear();
                 Navigator.pop(context);
               },
@@ -68,13 +67,33 @@ class _HomePageState extends State<HomePage> {
           if (snapshot.hasData) {
             final notesList = snapshot.data!.docs;
             return ListView.builder(
+              itemCount: notesList.length,
               itemBuilder: (context, index) {
                 DocumentSnapshot document = notesList[index];
                 String docID = document.id;
                 Map<String, dynamic> data =
                     document.data() as Map<String, dynamic>;
-                String noteText = data['notes'];
-                return null;
+                String noteText = data['note'];
+                return ListTile(
+                  title: Text(noteText),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      IconButton(
+                        onPressed: () => openNoteBox(docID),
+                        icon: const Icon(
+                          Icons.edit_document,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () => firestoreService.deleteNote(docID),
+                        icon: const Icon(
+                          Icons.delete,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
               },
             );
           } else {
