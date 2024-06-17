@@ -1,6 +1,4 @@
-import 'package:cp02/firebase_options.dart';
 import 'package:cp02/themes/lightmode.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/home_page.dart';

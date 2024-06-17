@@ -9,7 +9,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final textController = TextEditingController();
-
   void openNoteBox(String? docID) {
     showDialog(
       context: context,
@@ -23,9 +22,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {},
               child: Text(
                 'Save',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.tertiary,
-                ),
+                style: TextStyle(color: Theme.of(context).colorScheme.tertiary),
               ),
             ),
           ],
@@ -38,13 +35,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => openNoteBox(null),
-        child: Icon(
-          Icons.add,
-          color: Theme.of(context).colorScheme.tertiary,
-        ),
-      ),
       appBar: AppBar(
         title: Center(
           child: Text(
@@ -54,6 +44,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => openNoteBox(null),
+        child: Icon(Icons.add, color: Theme.of(context).colorScheme.tertiary),
       ),
     );
   }
