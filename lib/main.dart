@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'pages/home_page.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+void main() {
   runApp(
     const MyApp(),
   );
@@ -19,8 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       theme: lightMode,
+      debugShowCheckedModeBanner: false,
       home: const HomePage(),
     );
   }
