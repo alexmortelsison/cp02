@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class FirestoreService {
   final CollectionReference notes =
@@ -19,14 +18,14 @@ class FirestoreService {
     return notesStream;
   }
 
-  Future<void> updateNote(String docID, String newNote) {
+  Future<void> updateNotes(String docID, String newNote) {
     return notes.doc(docID).update({
       'note': newNote,
       'timeStamp': Timestamp.now(),
     });
   }
 
-  Future<void> deleteNote(String docID) {
+  Future<void> deleteNotes(String docID) {
     return notes.doc(docID).delete();
   }
 }

@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cp02/services/firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,9 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  FirestoreService firestoreService = FirestoreService();
   final textController = TextEditingController();
-
+  FirestoreService firestoreService = FirestoreService();
   void openNoteBox(String? docID) {
     showDialog(
       context: context,
@@ -27,13 +28,13 @@ class _HomePageState extends State<HomePage> {
                 if (docID == null) {
                   firestoreService.addNote(textController.text);
                 } else {
-                  firestoreService.updateNote(docID, textController.text);
+                  firestoreService.updateNotes(docID, textController.text);
                 }
                 textController.clear();
                 Navigator.pop(context);
               },
               child: Text(
-                'Save',
+                'Add',
                 style: TextStyle(color: Theme.of(context).colorScheme.tertiary),
               ),
             ),
@@ -47,19 +48,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => openNoteBox(null),
+        child: Icon(
+          Icons.add,
+          color: Theme.of(context).colorScheme.tertiary,
+        ),
+      ),
       appBar: AppBar(
         title: Center(
           child: Text(
             'C R U D',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
-            ),
+            style:
+                TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => openNoteBox(null),
-        child: Icon(Icons.add, color: Theme.of(context).colorScheme.tertiary),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: firestoreService.getNotesStream(),
@@ -81,15 +84,11 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       IconButton(
                         onPressed: () => openNoteBox(docID),
-                        icon: const Icon(
-                          Icons.edit_document,
-                        ),
+                        icon: const Icon(Icons.edit_document),
                       ),
                       IconButton(
-                        onPressed: () => firestoreService.deleteNote(docID),
-                        icon: const Icon(
-                          Icons.delete,
-                        ),
+                        onPressed: () => firestoreService.deleteNotes(docID),
+                        icon: const Icon(Icons.delete),
                       ),
                     ],
                   ),
